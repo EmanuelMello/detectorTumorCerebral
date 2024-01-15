@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Tumor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Detector de Tumor</h1>
+        <form id="upload-form" method="post" enctype="multipart/form-data">
+            <input type="file" id="file-input" name="file" accept=".png, .jpg, .jpeg, .gif">
+            <label for="file-input" id="file-label">Escolha um arquivo</label>
+            <button type="submit" id="submit-button">Enviar</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if resultado %}
+            <div class="result">
+                <p>A imagem foi classificada como:</p>
+                <h2>{{ resultado }}</h2>
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
